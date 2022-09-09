@@ -1,2 +1,2 @@
-# dicoding-submission-story-app
-Submission Aplikasi Story App
+# Aplikasi Story App
+## Submission : Belajar Pengembangan Aplikasi Android Intermediate
