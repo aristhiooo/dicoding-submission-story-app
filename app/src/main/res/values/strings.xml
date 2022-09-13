@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Dicoding Intermediate - StoryApp</string>
+    <string name="story_s_photo">Story\'s Photo</string>
+    <string name="no_data">No Data</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="login_to_your_account">Login to Your Account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="dont_have_account">Don\'t have an account yet?</string>
+    <string name="register_here">Register Here</string>
 </resources>

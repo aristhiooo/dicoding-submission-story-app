@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Learn/dicoding-submission-story-app/app/src/main/res/layout/activity_login.xml" value="0.371875" />
         <entry key="..\:/Learn/dicoding-submission-story-app/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/Learn/dicoding-submission-story-app/app/src/main/res/layout/item_story_list.xml" value="0.37083333333333335" />
       </map>
     </option>
   </component>
