@@ -1,7 +1,10 @@
 package id.co.iconpln.dicodingintermediate_storyapp.repository.remote
 
+import com.google.gson.Gson
 import id.co.iconpln.dicodingintermediate_storyapp.BuildConfig
+import id.co.iconpln.dicodingintermediate_storyapp.repository.remote.responsemodel.PostMethodResponse
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,5 +27,10 @@ object ApiConfig {
             .client(client)
             .build()
             .create(ApiService::class.java)
+    }
+
+    fun errorResponseHandler(response: ResponseBody?): PostMethodResponse {
+        val gson = Gson()
+        return gson.fromJson(response?.charStream(), PostMethodResponse::class.java)
     }
 }
