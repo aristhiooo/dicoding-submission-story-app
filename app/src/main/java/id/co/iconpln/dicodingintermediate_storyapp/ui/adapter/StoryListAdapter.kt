@@ -10,7 +10,8 @@ import id.co.iconpln.dicodingintermediate_storyapp.databinding.ItemStoryListBind
 import id.co.iconpln.dicodingintermediate_storyapp.repository.remote.responsemodel.ListStoryItem
 import id.co.iconpln.dicodingintermediate_storyapp.ui.adapter.StoryListAdapter.ViewHolder
 
-class StoryListAdapter(private val onItemClicked: (ListStoryItem) -> Unit) : ListAdapter<ListStoryItem, ViewHolder>(DIFF_CALLBACK) {
+class StoryListAdapter(private val onItemClicked: (ListStoryItem) -> Unit) :
+    ListAdapter<ListStoryItem, ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemStoryListBinding.inflate(LayoutInflater.from(parent.context), parent, false)

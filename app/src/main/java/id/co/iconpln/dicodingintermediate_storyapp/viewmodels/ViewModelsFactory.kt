@@ -13,6 +13,9 @@ class ViewModelsFactory private constructor(private val appRepository: AppReposi
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(appRepository) as T
             }
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(appRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }
