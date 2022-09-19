@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val rootView: View = binding.root
-        setContentView(rootView)
+        setContentView(rootView) //
     }
 }
