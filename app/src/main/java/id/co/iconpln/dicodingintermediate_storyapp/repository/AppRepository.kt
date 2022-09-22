@@ -2,7 +2,6 @@ package id.co.iconpln.dicodingintermediate_storyapp.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import id.co.iconpln.dicodingintermediate_storyapp.models.User
 import id.co.iconpln.dicodingintermediate_storyapp.repository.local.UserPreference
 import id.co.iconpln.dicodingintermediate_storyapp.repository.remote.ApiConfig
@@ -19,7 +18,6 @@ import timber.log.Timber
 class AppRepository private constructor(private val apiService: ApiService) {
     private val userPreference = UserPreference()
 
-    private val _listStories = MutableLiveData<List<ListStoryItem>>()
     private val resultLogin = MediatorLiveData<Result<String>>()
     private val resultRegister = MediatorLiveData<Result<String>>()
     private val resultGetAllStories = MediatorLiveData<Result<List<ListStoryItem>>>()
@@ -56,7 +54,7 @@ class AppRepository private constructor(private val apiService: ApiService) {
         apiService.postRegisterAccount(name, email, password).enqueue(object : Callback<PostMethodResponse> {
             override fun onResponse(call: Call<PostMethodResponse>, response: Response<PostMethodResponse>) {
                 if (response.isSuccessful) {
-                    resultRegister.value = Result.Success(response.body()?.message.toString().uppercase())
+                    resultRegister.value = Result.Success(response.body()?.message.toString())
                 } else {
                     resultRegister.value = Result.Error(ApiConfig.errorResponseHandler(response.errorBody()).message.uppercase())
                 }
@@ -76,13 +74,7 @@ class AppRepository private constructor(private val apiService: ApiService) {
             override fun onResponse(call: Call<GetAllStoriesResponse>, response: Response<GetAllStoriesResponse>) {
                 if (response.isSuccessful) {
                     val stories = response.body()?.listStory
-                    _listStories.value = stories!!
-                    //resultGetAllStories.value = Result.Success(stories) // not LiveData
-
-                    resultGetAllStories.addSource(_listStories) { newData: List<ListStoryItem> ->
-                        resultGetAllStories.value = Result.Success(newData)
-                    }
-
+                    resultGetAllStories.value = Result.Success(stories!!)
                 } else {
                     val errorBody = ApiConfig.errorResponseHandler(response.errorBody())
                     val errorMessage = errorBody.message
@@ -95,7 +87,6 @@ class AppRepository private constructor(private val apiService: ApiService) {
                 Timber.e(t)
                 resultGetAllStories.value = Result.Error(t.message.toString())
             }
-
         })
         return resultGetAllStories
     }
@@ -103,7 +94,6 @@ class AppRepository private constructor(private val apiService: ApiService) {
     companion object {
         @Volatile
         private var INSTANCE: AppRepository? = null
-
         fun getInstance(apiService: ApiService): AppRepository = INSTANCE ?: synchronized(this) {
             INSTANCE ?: AppRepository(apiService)
         }.also { INSTANCE = it }
