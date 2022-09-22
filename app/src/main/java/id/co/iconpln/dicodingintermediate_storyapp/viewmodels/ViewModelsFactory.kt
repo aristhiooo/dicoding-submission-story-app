@@ -1,6 +1,5 @@
 package id.co.iconpln.dicodingintermediate_storyapp.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import id.co.iconpln.dicodingintermediate_storyapp.repository.AppRepository
@@ -23,8 +22,8 @@ class ViewModelsFactory private constructor(private val appRepository: AppReposi
     companion object {
         @Volatile
         private var INSTANCE: ViewModelsFactory? = null
-        fun getInstance(context: Context): ViewModelsFactory = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: ViewModelsFactory(Inject.provideRepository(context))
+        fun getInstance(): ViewModelsFactory = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: ViewModelsFactory(Inject.provideRepository())
         }.also { INSTANCE = it }
     }
 }

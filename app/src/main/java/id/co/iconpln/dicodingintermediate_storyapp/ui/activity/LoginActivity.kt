@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             .load("https://bucket.cloud.lintasarta.co.id:8082/dts-pelatihan/thumbnail/271f81da-cc11-4080-ae9c-116c188227ea-August.jpeg")
             .into(binding.ivLogoLogin)
 
-        val factory: ViewModelsFactory = ViewModelsFactory.getInstance(this)
+        val factory: ViewModelsFactory = ViewModelsFactory.getInstance()
         val viewModel: LoginViewModel by viewModels { factory }
 
         binding.btnLogin.setOnClickListener {

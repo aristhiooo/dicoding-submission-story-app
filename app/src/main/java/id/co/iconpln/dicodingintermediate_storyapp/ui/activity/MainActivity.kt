@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import id.co.iconpln.dicodingintermediate_storyapp.databinding.ActivityMainBinding
 import id.co.iconpln.dicodingintermediate_storyapp.repository.Result
 import id.co.iconpln.dicodingintermediate_storyapp.ui.adapter.StoryListAdapter
@@ -26,10 +27,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(rootView)
 
         val storyListAdapter = StoryListAdapter { storyItem ->
+            MaterialAlertDialogBuilder(this).setTitle(storyItem.name)
+                .setMessage(storyItem.description)
+                .setPositiveButton("OK") { _, _ ->
 
+                }.show()
         }
 
-        val factory: ViewModelsFactory = ViewModelsFactory.getInstance(this)
+        val factory: ViewModelsFactory = ViewModelsFactory.getInstance()
         val viewModel: MainViewModel by viewModels { factory }
 
         viewModel.getAllStories().observe(this) { result ->
