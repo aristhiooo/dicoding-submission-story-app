@@ -7,7 +7,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.io.File
 
 interface ApiService {
 
@@ -32,11 +31,11 @@ interface ApiService {
     ): Call<GetAllStoriesResponse>
 
     @Multipart
-    @Headers("Content-Type: multipart/form-data")
     @POST("stories")
     fun postNewStory(
+        @Header("Authorization") authToken: String,
         @Part("description") description: RequestBody,
-        @Part("photo") photo: MultipartBody.Part,
+        @Part photo: MultipartBody.Part,
         @Part("lat") latitude: RequestBody,
         @Part("lon") longitude: RequestBody,
     ): Call<PostMethodResponse>

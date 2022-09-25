@@ -1,11 +1,10 @@
 package id.co.iconpln.dicodingintermediate_storyapp.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import id.co.iconpln.dicodingintermediate_storyapp.databinding.ActivityMainBinding
@@ -78,11 +77,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.fabCreateNewStory.setOnClickListener {
-            val fragmentManager = supportFragmentManager
-            val newFragment = CreateStoryFragment()
-            val transaction = fragmentManager.beginTransaction()
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            transaction.add(android.R.id.content, newFragment).addToBackStack(null).commit()
+            CreateStoryFragment.display(supportFragmentManager)
         }
     }
 
