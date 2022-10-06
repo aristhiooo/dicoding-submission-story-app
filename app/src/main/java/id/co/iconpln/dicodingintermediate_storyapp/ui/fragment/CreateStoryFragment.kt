@@ -163,6 +163,11 @@ class CreateStoryFragment : DialogFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun isLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.buttonAdd.visibility = View.GONE

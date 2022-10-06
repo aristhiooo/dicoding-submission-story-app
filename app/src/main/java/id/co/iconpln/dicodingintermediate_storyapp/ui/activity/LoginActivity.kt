@@ -11,6 +11,7 @@ import id.co.iconpln.dicodingintermediate_storyapp.repository.Result
 import id.co.iconpln.dicodingintermediate_storyapp.repository.local.UserPreference
 import id.co.iconpln.dicodingintermediate_storyapp.ui.customview.CustomSnackbar.snackbarError
 import id.co.iconpln.dicodingintermediate_storyapp.ui.customview.CustomSnackbar.snackbarSuccess
+import id.co.iconpln.dicodingintermediate_storyapp.ui.fragment.RegisterNewUserFragment
 import id.co.iconpln.dicodingintermediate_storyapp.viewmodels.LoginViewModel
 import id.co.iconpln.dicodingintermediate_storyapp.viewmodels.ViewModelsFactory
 import java.util.Timer
@@ -37,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
 
         val factory: ViewModelsFactory = ViewModelsFactory.getInstance()
         val viewModel: LoginViewModel by viewModels { factory }
+
+        binding.btnRegister.setOnClickListener {
+            RegisterNewUserFragment.display(supportFragmentManager)
+        }
 
         binding.btnLogin.setOnClickListener {
             val email = binding.edLoginEmail.text.toString().trim()
