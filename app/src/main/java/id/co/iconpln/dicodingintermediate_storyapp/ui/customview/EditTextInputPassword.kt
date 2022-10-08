@@ -2,13 +2,12 @@ package id.co.iconpln.dicodingintermediate_storyapp.ui.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.widget.addTextChangedListener
 import id.co.iconpln.dicodingintermediate_storyapp.R
 
 class EditTextInputPassword : AppCompatEditText, View.OnTouchListener {
@@ -36,22 +35,12 @@ class EditTextInputPassword : AppCompatEditText, View.OnTouchListener {
     }
 
     private fun init() {
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+        addTextChangedListener(onTextChanged = { charSeq, _, _, _ ->
+            error = if (charSeq.toString().length < 6) {
+                "Password must be 6 characters or more"
+            } else {
+                null
             }
-
-            override fun onTextChanged(charSeq: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                error = if (charSeq.toString().length < 6) {
-                    "Password must be 6 characters or more"
-                } else {
-                    null
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
         })
     }
 }

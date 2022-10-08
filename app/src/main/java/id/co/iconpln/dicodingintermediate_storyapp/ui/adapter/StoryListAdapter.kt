@@ -29,7 +29,7 @@ class StoryListAdapter :
         holder.binding.root.setOnClickListener {
             it.context.startActivity(
                 Intent(it.context, DetailStoryActivity::class.java)
-                    .putExtra("STORY_DETAIL", item),
+                    .putExtra(DetailStoryActivity.STORY_DETAIL, item),
                 ActivityOptionsCompat.makeSceneTransitionAnimation(it.context as Activity).toBundle()
             )
         }
