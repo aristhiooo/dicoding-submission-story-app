@@ -15,7 +15,8 @@
     <string name="description">Description</string>
     <string name="add">Add</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
+    <string name="image_detail_photo">Image Detail Photo</string>
+    <string name="logout">Logout</string>
 </resources>

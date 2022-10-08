@@ -10,13 +10,15 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "id.co.iconpln.dicodingintermediate_storyapp"
+        applicationId 'id.co.iconpln.dicodingintermediate_storyapp'
         minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        buildConfigField 'String', 'API_ENDPOINT', '\"https://story-api.dicoding.dev/v1/\"'
     }
 
     viewBinding {

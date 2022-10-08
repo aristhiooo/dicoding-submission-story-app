@@ -1,8 +1,10 @@
 package id.co.iconpln.dicodingintermediate_storyapp.repository.local
 
 import android.content.Context
+import android.content.Intent
 import id.co.iconpln.dicodingintermediate_storyapp.ApplicationController.Companion.instance
 import id.co.iconpln.dicodingintermediate_storyapp.models.User
+import timber.log.Timber
 
 internal class UserPreference {
 
@@ -28,6 +30,17 @@ internal class UserPreference {
             isLogin = preference.getBoolean(USER_IS_LOGIN, false)
         }
         return user
+    }
+
+    fun clearAndLogout() {
+        val editor = preference.edit()
+        editor.clear()
+        editor.apply()
+        val intent: Intent? = instance.applicationContext.packageManager.getLaunchIntentForPackage(
+            instance.applicationContext.packageName)
+        intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        instance.applicationContext.startActivity(intent)
+        Timber.i("Clear user data")
     }
 
     companion object {

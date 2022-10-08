@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
     fun getApiService(): ApiService {
-        val urlEndpoint = "https://story-api.dicoding.dev/v1/"
         val connectionTimeOut: Long = 30
         val client = OkHttpClient.Builder()
             .connectTimeout(connectionTimeOut, TimeUnit.SECONDS)
@@ -22,7 +21,7 @@ object ApiConfig {
                 else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE))
             .build()
         return Retrofit.Builder()
-            .baseUrl(urlEndpoint)
+            .baseUrl(BuildConfig.API_ENDPOINT)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

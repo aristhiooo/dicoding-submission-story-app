@@ -14,7 +14,7 @@ import id.co.iconpln.dicodingintermediate_storyapp.ui.customview.CustomSnackbar.
 import id.co.iconpln.dicodingintermediate_storyapp.ui.fragment.RegisterNewUserFragment
 import id.co.iconpln.dicodingintermediate_storyapp.viewmodels.LoginViewModel
 import id.co.iconpln.dicodingintermediate_storyapp.viewmodels.ViewModelsFactory
-import java.util.Timer
+import java.util.*
 import kotlin.concurrent.timerTask
 
 class LoginActivity : AppCompatActivity() {

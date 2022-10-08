@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import id.co.iconpln.dicodingintermediate_storyapp.R
 
 class EditTextInputEmail : AppCompatEditText, View.OnTouchListener {
 
@@ -29,7 +30,7 @@ class EditTextInputEmail : AppCompatEditText, View.OnTouchListener {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        hint = "E-Mail"
+        hint = resources.getString(R.string.email)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
         minHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48F, resources.displayMetrics).toInt()
         textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 6F, resources.displayMetrics)

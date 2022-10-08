@@ -6,9 +6,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import id.co.iconpln.dicodingintermediate_storyapp.R
 import id.co.iconpln.dicodingintermediate_storyapp.databinding.ActivityMainBinding
 import id.co.iconpln.dicodingintermediate_storyapp.repository.Result
+import id.co.iconpln.dicodingintermediate_storyapp.repository.local.UserPreference
 import id.co.iconpln.dicodingintermediate_storyapp.ui.adapter.StoryListAdapter
 import id.co.iconpln.dicodingintermediate_storyapp.ui.customview.CustomSnackbar.snackbarError
 import id.co.iconpln.dicodingintermediate_storyapp.ui.fragment.CreateStoryFragment
@@ -25,13 +26,7 @@ class MainActivity : AppCompatActivity() {
         val rootView: View = binding.root
         setContentView(rootView)
 
-        val storyListAdapter = StoryListAdapter { storyItem ->
-            MaterialAlertDialogBuilder(this).setTitle(storyItem.name)
-                .setMessage(storyItem.description)
-                .setPositiveButton("OK") { _, _ ->
-
-                }.show()
-        }
+        val storyListAdapter = StoryListAdapter()
 
         val factory: ViewModelsFactory = ViewModelsFactory.getInstance()
         val viewModel: MainViewModel by viewModels { factory }
@@ -78,6 +73,17 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabCreateNewStory.setOnClickListener {
             CreateStoryFragment.display(supportFragmentManager)
+        }
+
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.logout -> {
+                    UserPreference().clearAndLogout()
+                    true
+                }
+                else -> false
+            }
+
         }
     }
 

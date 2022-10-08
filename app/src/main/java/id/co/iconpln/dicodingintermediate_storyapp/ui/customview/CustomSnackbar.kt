@@ -36,19 +36,4 @@ object CustomSnackbar {
             }
         }.show()
     }
-
-    fun View.snackbarWarning(message: String) {
-        Snackbar.make(this, message, Snackbar.LENGTH_LONG).also { snackbar ->
-            snackbar.setBackgroundTint(
-                ContextCompat.getColor(
-                    context,
-                    R.color.yellow_message_warning
-                )
-            )
-            snackbar.setTextColor(Color.WHITE)
-            snackbar.setAction("OK") {
-                snackbar.dismiss()
-            }
-        }.show()
-    }
 }

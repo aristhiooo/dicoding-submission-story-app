@@ -9,6 +9,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import id.co.iconpln.dicodingintermediate_storyapp.R
 
 class EditTextInputPassword : AppCompatEditText, View.OnTouchListener {
 
@@ -23,12 +24,12 @@ class EditTextInputPassword : AppCompatEditText, View.OnTouchListener {
     }
 
     override fun onTouch(view: View?, event: MotionEvent?): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        hint = "Password"
+        hint = resources.getString(R.string.password)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
         minHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48F, resources.displayMetrics).toInt()
         textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 6F, resources.displayMetrics)
